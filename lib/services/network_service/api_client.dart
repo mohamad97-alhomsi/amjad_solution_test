@@ -20,7 +20,7 @@ class ApiClient {
   }) async {
     final url =
         uri ?? Uri.http(baseUrl ?? ApiConstants.baseUrl, path, parameters);
-    // Logger().i(url);
+    Logger().i(url);
     return await requestServer(() async {
       final response = await _dio
           .getUri(

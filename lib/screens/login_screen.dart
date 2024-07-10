@@ -1,5 +1,7 @@
 import 'package:amjad_solutions_test/constants/app_colors.dart';
 import 'package:amjad_solutions_test/constants/constants.dart';
+import 'package:amjad_solutions_test/data/cubits/clinic_cubit/clinic_cubit.dart';
+import 'package:amjad_solutions_test/data/cubits/home_cubit/home_cubit.dart';
 import 'package:amjad_solutions_test/data/cubits/login_cubit/login_cubit.dart';
 import 'package:amjad_solutions_test/data/models/login_model.dart';
 import 'package:amjad_solutions_test/screens/main_layout.dart';
@@ -29,7 +31,14 @@ class LoginScreen extends StatelessWidget {
                 .showSnackBar(SnackBar(content: Text("Somthing wrong")));
           } else if (state is LoginSuccessState) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MainLayout()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MultiBlocProvider(providers: [
+                          BlocProvider<HomeCubit>(
+                              create: (ctx) => HomeCubit()..getOffersCubit()),
+                          BlocProvider<ClinicCubit>(
+                              create: (ctx) => ClinicCubit()..getClinicsCubit())
+                        ], child: MainLayout())));
           }
         },
         builder: (context, state) {

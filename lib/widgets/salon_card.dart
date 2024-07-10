@@ -11,6 +11,8 @@ class SalonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      surfaceTintColor: Colors.white,
+      color: Colors.white,
       child: Container(
         height: 172.h,
         width: 204.w,
@@ -27,7 +29,7 @@ class SalonCard extends StatelessWidget {
                                 image: DecorationImage(image: AssetImage(AppConstants.salonImage),fit: BoxFit.cover)
               
                 ),
-              height: 124,
+                  height: 124.h,
                      
                 child: Container(
                        decoration: BoxDecoration(
@@ -57,16 +59,42 @@ class SalonCard extends StatelessWidget {
 
             ],
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical:20.h ,horizontal: 11.w),
-            child: Row(              children: [
-                SvgPicture.asset(AppConstants.likeIcon),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5.w),
-                  child: Text("2,456 Likes",style: regularTextStyle(fontSize: 10.sp,color: Color(0xff878787)),))
-              ],
-            ),
-          )
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 10.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(AppConstants.likeIcon),
+                        Container(
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
+                            child: Text(
+                              "200 Likes",
+                              style: regularTextStyle(
+                                  fontSize: 10.sp, color: Color(0xff878787)),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(AppConstants.starIcon),
+                        Container(
+                            margin: EdgeInsets.symmetric(horizontal: 5.w),
+                            child: Text(
+                              "4.2 (${20} Reviews)",
+                              style: regularTextStyle(
+                                  fontSize: 10.sp, color: Color(0xff878787)),
+                            ))
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
         ],),
       ),
     );

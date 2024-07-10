@@ -1,10 +1,13 @@
 import 'package:amjad_solutions_test/screens/main_layout.dart';
 import 'package:amjad_solutions_test/screens/login_screen.dart';
+import 'package:amjad_solutions_test/services/storage_service/shared_prefrence.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageHelper.init();
   runApp(const MyApp());
 }
 

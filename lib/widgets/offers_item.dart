@@ -1,5 +1,6 @@
 import 'package:amjad_solutions_test/constants/app_colors.dart';
 import 'package:amjad_solutions_test/constants/constants.dart';
+import 'package:amjad_solutions_test/data/models/offers_model.dart';
 import 'package:amjad_solutions_test/utils/text_style_manager.dart';
 import 'package:amjad_solutions_test/widgets/app_button.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +8,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OffersItem extends StatelessWidget {
-  const OffersItem({super.key, this.imageUrl});
-final String? imageUrl;
+  const OffersItem({super.key, required this.offerObject});
+  final Offer offerObject; 
   @override
   Widget build(BuildContext context) {
     return Container(
+    
       height: 150.h,
+      //? one image for each offer
       decoration: BoxDecoration(
-                     image: DecorationImage(image: imageUrl ==null?AssetImage(AppConstants.offerImage): NetworkImage(imageUrl!),fit: BoxFit.cover),
+        image: DecorationImage(
+            image: offerObject.gallery!.isEmpty
+                ? AssetImage(AppConstants.offerImage)
+                : NetworkImage(offerObject.gallery![0]),
+            fit: BoxFit.cover),
 
       ),
       child: Container(
@@ -75,14 +82,24 @@ Color.fromRGBO(60, 60, 60, 1)
             ),
           )),
           Positioned(
-            top: 88.h,
+                top: 80.h,
             child: Container(
-              padding: EdgeInsets.only(left:21.w ),
+                  padding: EdgeInsets.only(left: 21.w),
               width: 173.w,height: 60.h,child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Special Offer",style: semiBoldTextStyle(fontSize: 14.sp,color: Colors.white),),
-                        Text("Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed ",style: regularTextStyle(fontSize: 10.sp,color: Colors.white),maxLines: 2,overflow: TextOverflow.ellipsis,),
+                      Text(
+                        "${offerObject.title}",
+                        style: semiBoldTextStyle(
+                            fontSize: 14.sp, color: Colors.white),
+                      ),
+                      Text(
+                        "${offerObject.description}",
+                        style: regularTextStyle(
+                            fontSize: 10.sp, color: Colors.white),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
         
             ],
           ),))

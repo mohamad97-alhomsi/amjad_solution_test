@@ -18,12 +18,6 @@ class ClinicModel {
         status: json["status"],
     );
 
-    Map<String, dynamic> toJson() => {
-        "success": success,
-        "content": content?.toJson(),
-        "message": message,
-        "status": status,
-    };
 }
 
 class Content {

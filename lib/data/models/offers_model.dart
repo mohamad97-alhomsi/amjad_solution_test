@@ -11,9 +11,7 @@ class OffersModel {
         offers: json["offers"] == null ? [] : List<Offer>.from(json["offers"]!.map((x) => Offer.fromJson(x))),
     );
 
-    Map<String, dynamic> toJson() => {
-        "offers": offers == null ? [] : List<dynamic>.from(offers!.map((x) => x.toJson())),
-    };
+  
 }
 
 class Offer {

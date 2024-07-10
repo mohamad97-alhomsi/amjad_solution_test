@@ -15,5 +15,11 @@ class AppConstants {
   static String salonImage = "${_imagesPath}salon_image.png";
     static String starIcon = "${_iconPath}star_icon.svg";
     static String likeIcon = "${_iconPath}like_icon.svg";
+  static String clinicImage = "${_imagesPath}clinic_image.jpeg";
+  static String clinic1 = "${_imagesPath}1.jpeg";
+  static String clinic2 = "${_imagesPath}2.jpeg";
+  static String clinic3 = "${_imagesPath}3.jpeg";
+  static String clinic4 = "${_imagesPath}4.jpeg";
+
 
 }
