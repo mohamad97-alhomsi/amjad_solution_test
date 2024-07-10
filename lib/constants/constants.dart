@@ -15,6 +15,9 @@ class AppConstants {
   static String salonImage = "${_imagesPath}salon_image.png";
     static String starIcon = "${_iconPath}star_icon.svg";
     static String likeIcon = "${_iconPath}like_icon.svg";
+  static String notificationIcon = "${_iconPath}notification_icon.svg";
+  static String menuIcon = "${_iconPath}menu_icon.svg";
+
   static String clinicImage = "${_imagesPath}clinic_image.jpeg";
   static String clinic1 = "${_imagesPath}1.jpeg";
   static String clinic2 = "${_imagesPath}2.jpeg";

@@ -1,4 +1,5 @@
 import 'package:amjad_solutions_test/constants/app_colors.dart';
+import 'package:amjad_solutions_test/constants/constants.dart';
 import 'package:amjad_solutions_test/data/cubits/clinic_cubit/clinic_cubit.dart';
 import 'package:amjad_solutions_test/data/cubits/home_cubit/home_cubit.dart';
 import 'package:amjad_solutions_test/utils/text_style_manager.dart';
@@ -10,24 +11,69 @@ import 'package:amjad_solutions_test/widgets/shimmer_widgets/offer_item_shimmer.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'dart:ui' as ui;
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          toolbarHeight: 150.h,
-          backgroundColor: AppColors.appBlue,
-        ),
         body: SingleChildScrollView(
-            child: Container(
+            child: Column(
+      children: [
+        Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            CustomPaint(
+              size: Size(500.w, 150.h),
+              painter: RPSCustomPainter(),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 20.h, left: 27.w, right: 21.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        width: 42.dm,
+                        height: 42.dm,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  AppConstants.clinicImage,
+                                ),
+                                fit: BoxFit.cover)),
+                      ),
+                      Text(
+                        "Hi Rama",
+                        style:
+                            regularTextStyle(fontSize: 16, color: Colors.white),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(AppConstants.notificationIcon),
+                      SvgPicture.asset(AppConstants.menuIcon)
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        Container(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             children: [
+                         
+                  
               sectionTitle(title: "Best Offers"),
               SizedBox(
                 height: 150.h,
@@ -99,7 +145,6 @@ class HomeScreen extends StatelessWidget {
                       return SizedBox.shrink();
                     },
                   )),
-                      
               sectionTitle(title: "Salon"),
               SizedBox(
                   height: 205.h,
@@ -114,7 +159,9 @@ class HomeScreen extends StatelessWidget {
                       }))
             ],
           ),
-        )));
+        ),
+      ],
+    )));
     
 
     
@@ -143,5 +190,33 @@ class HomeScreen extends StatelessWidget {
                 ))
           ],
         ));
+  }
+}
+
+
+
+
+
+
+
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Path path_0 = Path();
+    path_0.moveTo(0, 0);
+    path_0.lineTo(428, 0);
+    path_0.lineTo(428, 142);
+    path_0.cubicTo(280.5, 126.5, 247, 165, 0, 142);
+    path_0.lineTo(0, 0);
+    path_0.close();
+
+    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
+    paint_0_fill.color = Color(0xff00A5BC).withOpacity(1.0);
+    canvas.drawPath(path_0, paint_0_fill);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
